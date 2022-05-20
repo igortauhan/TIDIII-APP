@@ -38,7 +38,6 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Center(child: Text(widget.title)),
       ),
-      backgroundColor: Colors.deepPurple.shade300,
       body: const SafeArea(
         child: Center(
           child: HomePage(),
