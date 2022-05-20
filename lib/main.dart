@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:tidiii/pages/home_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -10,9 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Excentrics',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
       ),
       home: const MyHomePage(title: 'Excentric App'),
     );
@@ -34,16 +36,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Center(child: Text(widget.title)),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Hello, world!',
-            ),
-          ],
+      backgroundColor: Colors.deepPurple.shade300,
+      body: const SafeArea(
+        child: Center(
+          child: HomePage(),
         ),
       ),
     );
