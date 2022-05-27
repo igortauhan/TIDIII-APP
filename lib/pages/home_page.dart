@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tidiii/application/energy_data.dart';
+import 'package:tidiii/application/energy_data_component.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
           )
       ),
       child: const Center(
-        child: EnergyData(),
+        child: EnergyDataComponent(),
       ),
     );
   }

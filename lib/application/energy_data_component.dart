@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class EnergyData extends StatefulWidget {
-  const EnergyData({Key? key}) : super(key: key);
+class EnergyDataComponent extends StatefulWidget {
+  const EnergyDataComponent({Key? key}) : super(key: key);
 
   @override
-  State<EnergyData> createState() => _EnergyDataState();
+  State<EnergyDataComponent> createState() => _EnergyDataComponentState();
 }
 
-class _EnergyDataState extends State<EnergyData> {
+class _EnergyDataComponentState extends State<EnergyDataComponent> {
   @override
   Widget build(BuildContext context) {
     return Column(
