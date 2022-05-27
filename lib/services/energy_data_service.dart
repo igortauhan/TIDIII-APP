@@ -4,20 +4,16 @@ import 'dart:convert';
 import 'package:tidiii/models/energy_data.dart';
 
 class EnergyDataService {
-  final String _urlFindAll = "http://192.168.1.2:8080/energy";
+  final String _urlFindLastRecord = "http://192.168.1.2:8080/energy/last";
 
-  Future<List<EnergyData>> findAll() async {
+  Future<EnergyData> findAll() async {
     final response =
-        await http.get(Uri.parse(_urlFindAll));
+        await http.get(Uri.parse(_urlFindLastRecord));
 
     if (response.statusCode != 200) {
       throw Exception("Error");
     }
 
-    Iterable iterable = json.decode(response.body);
-    List<EnergyData> energyData = List<EnergyData>
-        .from(iterable.map((energy) => EnergyData.fromJson(energy)));
-
-    return energyData;
+    return EnergyData.fromJson(jsonDecode(response.body));
   }
 }
