@@ -47,7 +47,15 @@ class _EnergyDataStreamState extends State<EnergyDataStream> {
         }
 
         return Container(
-          child: prepareDefaultText(snapshot.data?.value.toString()),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              prepareDefaultText('Gasto atual em Ampères: '),
+              prepareDefaultText(snapshot.data?.value.toString()),
+              prepareDefaultText('A')
+            ],
+          )
         );
       }
     );
@@ -57,8 +65,9 @@ class _EnergyDataStreamState extends State<EnergyDataStream> {
     return Text(
       text.toString(),
       style: const TextStyle(
-          fontSize: 18.0,
-          fontFamily: 'Nunito'
+        color: Colors.white,
+        fontSize: 20.0,
+        fontFamily: 'Nunito'
       ),
     );
   }
