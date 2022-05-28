@@ -38,6 +38,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text(widget.title)),
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.menu),
+        ),
+        actions: <Widget>[
+          TextButton(
+              onPressed: () {},
+              child: const Text('')
+          )
+        ],
       ),
       body: const SafeArea(
         child: Center(
