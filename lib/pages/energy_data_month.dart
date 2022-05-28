@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tidiii/application/gradient_background.dart';
+import 'package:tidiii/services/energy_data_service.dart';
 import 'package:tidiii/utils/prepare_text.dart';
 
 class EnergyDataMonth extends StatefulWidget {
@@ -12,6 +13,10 @@ class EnergyDataMonth extends StatefulWidget {
 
 class _EnergyDataMonthState extends State<EnergyDataMonth> {
   int? value;
+
+  Future<int> _getSpentValue() async {
+    return EnergyDataService().getCurrentSpentValueMonth(value);
+  }
 
   @override
   void initState() {
@@ -32,8 +37,22 @@ class _EnergyDataMonthState extends State<EnergyDataMonth> {
                 const SizedBox(
                   height: 5.0,
                 ),
-                PrepareText()
-                    .prepareDefaultTextAfter('$value', 'R\$'),
+                FutureBuilder(
+                  future: _getSpentValue(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const CircularProgressIndicator();
+                    }
+
+                    if (snapshot.data == 0) {
+                      return PrepareText()
+                          .prepareDefaultText('Error');
+                    }
+
+                    return PrepareText()
+                        .prepareDefaultTextAfter(snapshot.data.toString(), 'R\$');
+                  }
+                )
               ],
             ),
       )),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:tidiii/pages/home_page.dart';
-import 'package:tidiii/application/default_drawer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,11 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text(widget.title)),
-        actions: <Widget>[
-          TextButton(onPressed: () {}, child: const Text('')) // centralizar title
-        ],
       ),
-      drawer: const DefaultDrawer(),
       body: const SafeArea(
         child: Center(
           child: HomePage(),
