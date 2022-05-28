@@ -55,7 +55,9 @@ class _EnergyDataSpentState extends State<EnergyDataSpent> {
                 )
               ],
             ),
-      )),
+          ),
+          highColor: Colors.indigo.shade700,
+          lowColor: Colors.indigo.shade400),
     );
   }
 }
