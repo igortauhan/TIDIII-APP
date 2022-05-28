@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 class GradientBackground extends StatefulWidget {
   final Widget someWidget;
+  final Color highColor;
+  final Color lowColor;
 
-  const GradientBackground({Key? key, required this.someWidget}) : super(key: key);
+  const GradientBackground({Key? key, required this.someWidget,
+      required this.highColor, required this.lowColor}) : super(key: key);
 
   @override
   State<GradientBackground> createState() => _GradientBackgroundState();
@@ -11,10 +14,14 @@ class GradientBackground extends StatefulWidget {
 
 class _GradientBackgroundState extends State<GradientBackground> {
   late final Widget someWidget;
+  late final Color highColor;
+  late final Color lowColor;
 
   @override
   void initState() {
     someWidget = widget.someWidget;
+    highColor = widget.highColor;
+    lowColor = widget.lowColor;
   }
 
   @override
@@ -27,8 +34,8 @@ class _GradientBackgroundState extends State<GradientBackground> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Colors.deepPurple.shade700,
-                Colors.deepPurple.shade300
+                highColor,
+                lowColor
               ]
           )
       ),

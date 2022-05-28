@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:tidiii/models/energy_data.dart';
-import 'package:tidiii/pages/energy_data_month.dart';
+import 'package:tidiii/pages/energy_data_spent.dart';
 import 'package:tidiii/utils/prepare_text.dart';
 
 import '../services/energy_data_service.dart';
@@ -69,7 +69,7 @@ class _EnergyDataStreamState extends State<EnergyDataStream> {
                 onPressed: () {
                   Navigator.push(context,
                     MaterialPageRoute(builder: (context) =>
-                        EnergyDataMonth(value: snapshot.data?.value)));
+                        EnergyDataSpent(value: snapshot.data?.value)));
                 },
                 style: ElevatedButton.styleFrom(
                     primary: Colors.deepPurpleAccent.shade700

@@ -4,22 +4,22 @@ class PrepareText {
   Widget prepareDefaultText(String? text) {
     return Text(
       text.toString(),
-      style: const TextStyle(
-          color: Colors.white,
-          fontSize: 20.0,
-          fontFamily: 'Nunito'
-      ),
+      style: _prepareTextStyle(),
     );
   }
 
-  Widget prepareDefaultTextAfter(String? text, String after) {
+  Widget prepareDefaultTextAfter(String? text, String? after) {
     return Text(
-      text.toString() + after,
-      style: const TextStyle(
-          color: Colors.white,
-          fontSize: 20.0,
-          fontFamily: 'Nunito'
-      ),
+      text.toString() + after.toString(),
+      style: _prepareTextStyle(),
+    );
+  }
+
+  TextStyle _prepareTextStyle() {
+    return const TextStyle(
+        color: Colors.white,
+        fontSize: 20.0,
+        fontFamily: 'Nunito'
     );
   }
 }
