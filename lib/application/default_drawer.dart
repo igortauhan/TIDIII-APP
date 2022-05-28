@@ -23,7 +23,7 @@ class _DefaultDrawerState extends State<DefaultDrawer> {
             ),
           ),
           ListTile(
-            title: PrepareText().prepareDefaultText('Calcular valor mensal'),
+            title: PrepareText().prepareDefaultText('Valores em R\$'),
             onTap: () {
               Navigator.pop(context);
             },
