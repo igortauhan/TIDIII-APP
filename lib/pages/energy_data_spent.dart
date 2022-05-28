@@ -68,7 +68,9 @@ class _EnergyDataSpentState extends State<EnergyDataSpent> {
             _showAlertDialog(context,
                 "Como funciona o calculo do valor?",
                 "O valor é calculado baseado no uso do produto "
-                "24 horas por dia ininterruptamente");
+                "24 horas por dia ininterruptamente.\n\n"
+                "O valor mensal é calculado com 30 dias corridos.\n\n"
+                "O valor semanal é calculado com 7 dias corridos.");
           },
           icon: const Icon(Icons.help),
         ),
