@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:tidiii/models/energy_data.dart';
+import 'package:tidiii/pages/energy_data_month.dart';
 import 'package:tidiii/utils/prepare_text.dart';
 
 import '../services/energy_data_service.dart';
@@ -48,15 +49,35 @@ class _EnergyDataStreamState extends State<EnergyDataStream> {
           );
         }
 
-        return Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              PrepareText().prepareDefaultText('Gasto atual em Ampères: '),
-              PrepareText().prepareDefaultTextAfter(snapshot.data?.value.toString(), 'A'),
-            ],
-          )
+        return Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                PrepareText().prepareDefaultText('Gasto atual em Ampères: '),
+                PrepareText().prepareDefaultTextAfter(snapshot.data?.value.toString(), 'A'),
+              ],
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            SizedBox(
+              width: 200.0,
+              height: 40.0,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) =>
+                        EnergyDataMonth(value: snapshot.data?.value)));
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.deepPurpleAccent.shade700
+                ),
+                child: PrepareText().prepareDefaultText('Calcular em R\$'),
+              ),
+            ),
+          ]
         );
       }
     );
