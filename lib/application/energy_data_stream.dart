@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:tidiii/models/energy_data.dart';
+import 'package:tidiii/utils/prepare_text.dart';
 
 import '../services/energy_data_service.dart';
 
@@ -52,24 +53,12 @@ class _EnergyDataStreamState extends State<EnergyDataStream> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              prepareDefaultText('Gasto atual em Ampères: '),
-              prepareDefaultText(snapshot.data?.value.toString()),
-              prepareDefaultText('A')
+              PrepareText().prepareDefaultText('Gasto atual em Ampères: '),
+              PrepareText().prepareDefaultTextAfter(snapshot.data?.value.toString(), 'A'),
             ],
           )
         );
       }
-    );
-  }
-
-  Widget prepareDefaultText(String? text) {
-    return Text(
-      text.toString(),
-      style: const TextStyle(
-        color: Colors.white,
-        fontSize: 20.0,
-        fontFamily: 'Nunito'
-      ),
     );
   }
 }
