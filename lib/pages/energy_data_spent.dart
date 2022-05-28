@@ -15,8 +15,16 @@ class EnergyDataSpent extends StatefulWidget {
 class _EnergyDataSpentState extends State<EnergyDataSpent> {
   int? value;
 
-  Future<int> _getSpentValue() async {
-    return EnergyDataService().getCurrentSpentValueMonth(value);
+  Future<List<int>> _getSpentValue() async {
+    int valueSpent;
+    List<int> values = [];
+
+    valueSpent = await EnergyDataService().getCurrentSpentValueByDays(value, 30);
+    values.add(valueSpent);
+
+    valueSpent = await EnergyDataService().getCurrentSpentValueByDays(value, 7);
+    values.add(valueSpent);
+    return values;
   }
 
   _showAlertDialog(BuildContext context,
@@ -75,24 +83,25 @@ class _EnergyDataSpentState extends State<EnergyDataSpent> {
                 const SizedBox(
                   height: 5.0,
                 ),
-                FutureBuilder(
+                FutureBuilder<List<int>>(
                   future: _getSpentValue(),
                   builder: (context, snapshot) {
-                    if (!snapshot.hasData) {
+                    if (!snapshot.hasData ||
+                        snapshot.connectionState == ConnectionState.waiting
+                    ) {
                       return const CircularProgressIndicator();
                     }
 
-                    if (snapshot.data == 0) {
-                      return PrepareText()
-                          .prepareDefaultText('Error');
-                    }
-
-                    return PrepareSizedBox()
-                        .prepareDefaultSizedBoxTextButtonTwoTextd(
-                          snapshot.data.toString(),
-                          ' R\$',
-                          Colors.indigo.shade700
-                        );
+                    return Column(
+                      children: [
+                        PrepareSizedBox()
+                          .prepareDefaultSizedBoxTextButtonTwoTextd(
+                            snapshot.data?.elementAt(0).toString(),
+                            ' R\$',
+                            Colors.indigo.shade700
+                        ),
+                    ]
+                    );
                   }
                 ),
               ],
