@@ -13,7 +13,7 @@ class _DefaultDrawerState extends State<DefaultDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.deepPurpleAccent,
       child: ListView(
         children: [
           SizedBox(
