@@ -27,6 +27,13 @@ class _EnergyDataSpentState extends State<EnergyDataSpent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.indigo,
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.help),
+        ),
+      ),
       body: GradientBackground(
           someWidget: Container(
             child: Column(
@@ -57,7 +64,7 @@ class _EnergyDataSpentState extends State<EnergyDataSpent> {
                           Colors.indigo.shade700
                         );
                   }
-                )
+                ),
               ],
             ),
           ),
