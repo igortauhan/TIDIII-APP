@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tidiii/application/gradient_background.dart';
 import 'package:tidiii/services/energy_data_service.dart';
+import 'package:tidiii/utils/prepare_sized_box.dart';
 import 'package:tidiii/utils/prepare_text.dart';
 
 class EnergyDataSpent extends StatefulWidget {
@@ -49,8 +50,11 @@ class _EnergyDataSpentState extends State<EnergyDataSpent> {
                           .prepareDefaultText('Error');
                     }
 
-                    return PrepareText()
-                        .prepareDefaultTextAfter(snapshot.data.toString(), 'R\$');
+                    return PrepareSizedBox()
+                        .prepareDefaultSizedBoxText(
+                          snapshot.data.toString(),
+                          Colors.indigo.shade700
+                        );
                   }
                 )
               ],
