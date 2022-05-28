@@ -14,7 +14,7 @@ class _EnergyDataComponentState extends State<EnergyDataComponent> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [
+      children: const [
         EnergyDataStream(),
       ],
     );

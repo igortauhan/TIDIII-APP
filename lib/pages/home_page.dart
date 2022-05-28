@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tidiii/application/energy_data_component.dart';
+import 'package:tidiii/application/gradient_background.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,23 +12,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.deepPurple.shade700,
-                Colors.deepPurple.shade300
-              ]
-          )
-      ),
-      child: const Center(
-        child: EnergyDataComponent(),
-      ),
-    );
+    return const GradientBackground(someWidget: EnergyDataComponent());
   }
 }

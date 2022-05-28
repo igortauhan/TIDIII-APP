@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:tidiii/models/energy_data.dart';
+import 'package:tidiii/pages/energy_data_month.dart';
+import 'package:tidiii/utils/prepare_text.dart';
 
 import '../services/energy_data_service.dart';
 
@@ -14,7 +16,8 @@ class EnergyDataStream extends StatefulWidget {
 
 class _EnergyDataStreamState extends State<EnergyDataStream> {
 
-  late final StreamController<EnergyData> _streamController = StreamController();
+  late final StreamController<EnergyData> _streamController =
+      StreamController();
 
   void _setControllerData() async {
     EnergyData energyData = await EnergyDataService().findAll();
@@ -46,29 +49,37 @@ class _EnergyDataStreamState extends State<EnergyDataStream> {
           );
         }
 
-        return Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              prepareDefaultText('Gasto atual em Ampères: '),
-              prepareDefaultText(snapshot.data?.value.toString()),
-              prepareDefaultText('A')
-            ],
-          )
+        return Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                PrepareText().prepareDefaultText('Gasto atual em Ampères: '),
+                PrepareText().prepareDefaultTextAfter(snapshot.data?.value.toString(), 'A'),
+              ],
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            SizedBox(
+              width: 200.0,
+              height: 40.0,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) =>
+                        EnergyDataMonth(value: snapshot.data?.value)));
+                },
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.deepPurpleAccent.shade700
+                ),
+                child: PrepareText().prepareDefaultText('Calcular em R\$'),
+              ),
+            ),
+          ]
         );
       }
-    );
-  }
-
-  Widget prepareDefaultText(String? text) {
-    return Text(
-      text.toString(),
-      style: const TextStyle(
-        color: Colors.white,
-        fontSize: 20.0,
-        fontFamily: 'Nunito'
-      ),
     );
   }
 }
