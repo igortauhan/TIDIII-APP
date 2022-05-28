@@ -3,15 +3,15 @@ import 'package:tidiii/application/gradient_background.dart';
 import 'package:tidiii/services/energy_data_service.dart';
 import 'package:tidiii/utils/prepare_text.dart';
 
-class EnergyDataMonth extends StatefulWidget {
+class EnergyDataSpent extends StatefulWidget {
   final int? value;
-  const EnergyDataMonth({Key? key, required this.value}) : super(key: key);
+  const EnergyDataSpent({Key? key, required this.value}) : super(key: key);
 
   @override
-  State<EnergyDataMonth> createState() => _EnergyDataMonthState();
+  State<EnergyDataSpent> createState() => _EnergyDataSpentState();
 }
 
-class _EnergyDataMonthState extends State<EnergyDataMonth> {
+class _EnergyDataSpentState extends State<EnergyDataSpent> {
   int? value;
 
   Future<int> _getSpentValue() async {
