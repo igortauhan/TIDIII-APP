@@ -19,6 +19,31 @@ class _EnergyDataSpentState extends State<EnergyDataSpent> {
     return EnergyDataService().getCurrentSpentValueMonth(value);
   }
 
+  _showAlertDialog(BuildContext context,
+      String? title, String? content) {
+    Widget okButton = TextButton(
+      child: const Text("OK"),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: Text(title.toString()),
+      content: Text(content.toString()),
+      actions: [
+        okButton,
+      ],
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   @override
   void initState() {
     value = widget.value;
@@ -30,7 +55,12 @@ class _EnergyDataSpentState extends State<EnergyDataSpent> {
       appBar: AppBar(
         backgroundColor: Colors.indigo,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            _showAlertDialog(context,
+                "Como funciona o calculo do valor?",
+                "O valor é calculado baseado no uso do produto "
+                "24 horas por dia ininterruptamente");
+          },
           icon: const Icon(Icons.help),
         ),
       ),
