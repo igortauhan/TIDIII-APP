@@ -14,7 +14,8 @@ class EnergyDataStream extends StatefulWidget {
 
 class _EnergyDataStreamState extends State<EnergyDataStream> {
 
-  late final StreamController<EnergyData> _streamController = StreamController();
+  late final StreamController<EnergyData> _streamController =
+      StreamController();
 
   void _setControllerData() async {
     EnergyData energyData = await EnergyDataService().findAll();

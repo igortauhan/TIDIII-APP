@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
       ),
       home: const MyHomePage(title: 'Excentric App'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
