@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tidiii/application/energy_data_future.dart';
 import 'package:tidiii/application/gradient_background.dart';
 import 'package:tidiii/services/energy_data_service.dart';
 import 'package:tidiii/utils/prepare_sized_box.dart';
@@ -78,11 +79,6 @@ class _EnergyDataSpentState extends State<EnergyDataSpent> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                PrepareText()
-                    .prepareDefaultText('Valor em R\$ aproximadamente mensal: '),
-                const SizedBox(
-                  height: 5.0,
-                ),
                 FutureBuilder<List<int>>(
                   future: _getSpentValue(),
                   builder: (context, snapshot) {
@@ -94,11 +90,16 @@ class _EnergyDataSpentState extends State<EnergyDataSpent> {
 
                     return Column(
                       children: [
-                        PrepareSizedBox()
-                          .prepareDefaultSizedBoxTextButtonTwoTextd(
-                            snapshot.data?.elementAt(0).toString(),
-                            ' R\$',
-                            Colors.indigo.shade700
+                        EnergyDataFuture(
+                          text: 'Valor em R\$ aproximadamente mensal: ',
+                          value: snapshot.data?.elementAt(0),
+                        ),
+                        const SizedBox(
+                          height: 100.0,
+                        ),
+                        EnergyDataFuture(
+                          text: 'Valor em R\$ aproximadamente semanal: ',
+                          value: snapshot.data?.elementAt(1),
                         ),
                     ]
                     );
