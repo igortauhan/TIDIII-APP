@@ -51,8 +51,9 @@ class _EnergyDataSpentState extends State<EnergyDataSpent> {
                     }
 
                     return PrepareSizedBox()
-                        .prepareDefaultSizedBoxText(
+                        .prepareDefaultSizedBoxTextButtonTwoTextd(
                           snapshot.data.toString(),
+                          ' R\$',
                           Colors.indigo.shade700
                         );
                   }

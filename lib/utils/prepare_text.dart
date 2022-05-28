@@ -8,9 +8,9 @@ class PrepareText {
     );
   }
 
-  Widget prepareDefaultTextAfter(String? text, String after) {
+  Widget prepareDefaultTextAfter(String? text, String? after) {
     return Text(
-      text.toString() + after,
+      text.toString() + after.toString(),
       style: _prepareTextStyle(),
     );
   }
