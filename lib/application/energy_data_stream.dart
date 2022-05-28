@@ -55,8 +55,8 @@ class _EnergyDataStreamState extends State<EnergyDataStream> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                PrepareText().prepareDefaultText('Gasto atual em Ampères: '),
-                PrepareText().prepareDefaultTextAfter(snapshot.data?.value.toString(), 'A'),
+                PrepareText().prepareDefaultText('Gasto atual em Watts: '),
+                PrepareText().prepareDefaultTextAfter(snapshot.data?.value.toString(), 'W'),
               ],
             ),
             const SizedBox(
