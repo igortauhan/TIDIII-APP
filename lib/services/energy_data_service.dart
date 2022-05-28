@@ -21,8 +21,8 @@ class EnergyDataService {
     return EnergyData.fromJson(jsonDecode(response.body));
   }
 
-  Future<int> getCurrentSpentValueMonth(int? value) async {
-    _urlGetCurrentSpentValue += "?value=$value&hours=24&days=30";
+  Future<int> getCurrentSpentValueByDays(int? value, int days) async {
+    _urlGetCurrentSpentValue += "?value=$value&hours=24&days=$days";
 
     final response =
         await http.get(Uri.parse(_urlGetCurrentSpentValue));
