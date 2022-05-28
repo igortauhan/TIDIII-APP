@@ -39,6 +39,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text(widget.title)),
+        actions: <Widget>[
+          TextButton(onPressed: () {}, child: const Text('')) // centralizar title
+        ],
       ),
       drawer: const DefaultDrawer(),
       body: const SafeArea(
